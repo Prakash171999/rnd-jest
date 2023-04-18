@@ -22,3 +22,19 @@ describe("", () => {
     expect(obj).toEqual({});
   });
 });
+
+/**
+ * null, empty string i.e "", undefined and 0 evaluates falsy
+ * Can have multiple expects in a describe function nut not recommended.
+ * If any one of the expect fails then whole test fails.
+ */
+describe("truth or false", () => {
+  it("null", () => {
+    const n = null;
+    expect(n).toBeFalsy() //Will pass
+    expect(n).toBeTruthy() //Will fail
+    expect(n).not.toBeTruthy() //Will pass
+    expect(n).toBeNull() //Will pass
+    expect(n).not.toBeUndefined() //Will pass
+  });
+});
