@@ -9,3 +9,16 @@ it("adds 1 + 2 to equals 3", () => {
   // toBe() is one of the matcher method.
   expect(result).toBe(3);
 });
+
+//Group common test blocks using describe. It is a way to group test together.
+describe("", () => {
+  it("adds 1 + 2 to equals 3", () => {
+    const result = sum(1, 2);
+    expect(result).toBe(3);
+  });
+
+  it("object assignment", () => {
+    const obj = {};
+    expect(obj).toEqual({});
+  });
+});
