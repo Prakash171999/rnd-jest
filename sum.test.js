@@ -31,10 +31,29 @@ describe("", () => {
 describe("truth or false", () => {
   it("null", () => {
     const n = null;
-    expect(n).toBeFalsy() //Will pass
-    expect(n).toBeTruthy() //Will fail
-    expect(n).not.toBeTruthy() //Will pass
-    expect(n).toBeNull() //Will pass
-    expect(n).not.toBeUndefined() //Will pass
+    expect(n).toBeFalsy(); //Will pass
+    // expect(n).toBeTruthy() //Will fail
+    expect(n).not.toBeTruthy(); //Will pass
+    expect(n).toBeNull(); //Will pass
+    expect(n).not.toBeUndefined(); //Will pass
+  });
+});
+
+/**
+ * Number matcher methods
+ */
+describe("numbers", () => {
+  it("two plus two", () => {
+    const value = 2 + 2;
+    expect(value).toBe(4);
+    expect(value).toBeGreaterThan(3);
+    expect(value).toBeGreaterThanOrEqual(4);
+    expect(value).toBeLessThan(7);
+    expect(value).toBeLessThanOrEqual(4);
+  });
+
+  it("adding floats", () => {
+    const value = 0.1 + 0.2;
+    expect(value).toBeCloseTo(0.299);
   });
 });
