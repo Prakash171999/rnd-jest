@@ -57,3 +57,33 @@ describe("numbers", () => {
     expect(value).toBeCloseTo(0.299);
   });
 });
+
+//String matchers
+describe("string", () => {
+  it("there is no I in team", () => {
+    expect("team").not.toMatch(/I/);
+  });
+});
+
+//Array matchers
+describe("arrays", () => {
+  const shopList = ["soap", "shampoo", "trash bag", "milk"];
+
+  expect(shopList).toContain("milk");
+});
+
+function compileIOSCode() {
+  throw new Error("You are using the wrong package");
+}
+
+//exception
+describe("exception", () => {
+  it("compiling IOS goes as expected", () => {
+    //Will throw error as the error message is not identical
+    // expect(() => compileIOSCode()).toThrow(
+    //   "Something wrong with the source code"
+    // );
+
+    expect(() => compileIOSCode()).toThrow("You are using the wrong package");
+  });
+});
