@@ -23,7 +23,25 @@ it("mock callback", () => {
 
   expect(mockCallback.mock.calls[1][0]).toBe(1);
 
-  expect(mockCallback.mock.results([0].value)).toBe(42);
+  expect(mockCallback.mock.results[0].value).toBe(42);
 
-  expect(mockCallback.mock.results([1].value)).toBe(43);
+  expect(mockCallback.mock.results[1].value).toBe(43);
+});
+
+it("mock return value", () => {
+  const mock = jest.fn();
+
+  //mockReturnValueOnce() is called on the mock function to specify that the next time the function is called, it should return true.
+  mock
+    .mockReturnValueOnce(true)
+    .mockReturnValueOnce(false)
+    .mockReturnValueOnce("Hello");
+
+  const results1 = mock();
+  const results2 = mock();
+  const results3 = mock();
+
+  expect(results1).toBe(true);
+  expect(results2).toBe(false);
+  expect(results3).toBe("Hello");
 });
