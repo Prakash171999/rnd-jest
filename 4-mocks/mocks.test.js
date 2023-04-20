@@ -1,3 +1,12 @@
+const axios = require("axios");
+
+const fetchData = async (id) => {
+  const results = await axios.get(
+    `https://jsonplaceholder.typicode.com/todos/${id}`
+  );
+  return results?.data;
+};
+
 const forEach = (items, callback) => {
   for (let i = 0; i < items.length; i++) {
     callback(items[i]);
@@ -44,4 +53,23 @@ it("mock return value", () => {
   expect(results1).toBe(true);
   expect(results2).toBe(false);
   expect(results3).toBe("Hello");
+});
+
+/**
+ * We don't want to make api call but only mock axios
+ */
+it("mock axios", async () => {
+  //First parameter always have to be an object. Second parameter accepts what METHOD i.e(GET, POST, etc) are we going to spy on.
+  /**
+   * 
+   */
+  jest.spyOn(axios, "get").mockReturnValueOnce({
+    data: {
+      id: 1,
+      todo: "This is a data todo",
+    },
+  });
+  const results = await fetchData(1);
+
+  expect(results.todo).toBe("This is a data todo");
 });
